@@ -694,6 +694,39 @@
   /* simple table renderer */
   Lab.table = (head, rows) => `<table class="data"><thead><tr>${head.map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<td class="row-h">${c}</td>` : `<td>${c == null || c === '' ? '<span class="muted">—</span>' : c}</td>`)).join('')}</tr>`).join('')}</tbody></table>`;
 
+  /* compact numeric control: [−big][−small] value [+small][+big], press-and-hold repeats */
+  Lab.Num = function (host, o) {
+    const steps = o.steps || [o.step || 1];
+    const f = (x) => String(+x.toPrecision(6));
+    host.classList.add('nctl');
+    host.innerHTML = `<label class="nctl-l" for="${o.id}">${o.label}</label><div class="nctl-b">${steps.slice().reverse().map((s) => `<button type="button" data-d="${-s}" aria-label="إنقاص ${f(s)}">−${f(s)}</button>`).join('')}<span class="nctl-f"><input id="${o.id}" type="number" inputmode="decimal" step="any"><i>${o.unit || ''}</i></span>${steps.map((s) => `<button type="button" data-d="${s}" aria-label="زيادة ${f(s)}">+${f(s)}</button>`).join('')}</div>`;
+    const input = host.querySelector('input');
+    const dec = o.decimals != null ? o.decimals : 2;
+    let value = o.value;
+    const api = {
+      set(v, emit = true) {
+        v = clamp(+v, o.min, o.max);
+        const q = o.quant || steps[0];
+        v = Math.round(v / q) * q;
+        value = +v.toFixed(10);
+        input.value = value.toFixed(dec);
+        if (emit && o.onInput) o.onInput(value);
+      },
+      get: () => value,
+    };
+    input.value = (+value).toFixed(dec);
+    input.addEventListener('change', () => { const v = parseFloat(input.value); if (isFinite(v)) api.set(v); else input.value = value.toFixed(dec); });
+    let timer = 0;
+    const stop = () => { clearTimeout(timer); clearInterval(timer); timer = 0; };
+    $$('button', host).forEach((b) => {
+      const d = parseFloat(b.dataset.d);
+      b.addEventListener('pointerdown', (e) => { e.preventDefault(); api.set(value + d); stop(); timer = setTimeout(() => { timer = setInterval(() => api.set(value + d), 70); }, 420); });
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach((ev) => b.addEventListener(ev, stop));
+      b.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); api.set(value + d); } });
+    });
+    return api;
+  };
+
   /* deterministic pseudo-random for "unknown" components */
   Lab.rand = (seed) => { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); };
 })();

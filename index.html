@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>مختبر القياسات الكهربائية</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="محاكاة تفاعلية لتجارب مختبر القياسات الكهربائية: الفولتميتر والأميتر وقنطرة ويتستون ومجزئ الجهد وقياس المحاثة والسعة و LVDT.">
+<meta name="description" content="مختبر قياسات كهربائية ثلاثي الأبعاد: وصّل الأسلاك وشغّل الأجهزة وسجّل القراءات.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap">
@@ -47,11 +47,14 @@
 
 <footer class="foot">
   <div class="foot-in">
-    <p>مختبر افتراضي لتجارب القياسات الكهربائية. القيم في المحاكاة مبنية على معادلات أوراق التجارب، والمكونات المجهولة لها قيم حقيقية مخفية تشبه مكونات المختبر.</p>
+    <p>مختبر القياسات الكهربائية · محاكاة ثلاثية الأبعاد</p>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="assets/js/core.js"></script>
+<script src="assets/js/lab3d.js"></script>
 <script src="assets/js/exp-voltmeter.js"></script>
 <script src="assets/js/exp-ammeter.js"></script>
 <script src="assets/js/exp-wheatstone.js"></script>
