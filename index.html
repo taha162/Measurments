@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مختبر القياسات الكهربائية</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="محاكاة تفاعلية لتجارب مختبر القياسات الكهربائية: الفولتميتر والأميتر وقنطرة ويتستون ومجزئ الجهد وقياس المحاثة والسعة و LVDT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" class="arrow-fill"></path>
+    </marker>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#home" aria-label="الصفحة الرئيسية">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="2" y="6" width="36" height="28" rx="6" class="bm-face"></rect>
+        <path d="M8 27 A13 13 0 0 1 32 27" class="bm-arc"></path>
+        <line x1="20" y1="29" x2="27" y2="14" class="bm-needle"></line>
+        <circle cx="20" cy="29" r="2.4" class="bm-pivot"></circle>
+      </svg>
+      <span class="brand-text"><b>مختبر القياسات</b><small>Electrical Measurements Lab</small></span>
+    </a>
+    <nav class="topnav" aria-label="التجارب">
+      <details class="nav-menu" id="nav-menu">
+        <summary>التجارب</summary>
+        <div class="menu" id="nav-list"></div>
+      </details>
+      <button type="button" class="icon-btn" id="theme-btn" aria-label="تبديل الوضع الليلي">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <p>مختبر افتراضي لتجارب القياسات الكهربائية. القيم في المحاكاة مبنية على معادلات أوراق التجارب، والمكونات المجهولة لها قيم حقيقية مخفية تشبه مكونات المختبر.</p>
+  </div>
+</footer>
+
+<script src="assets/js/core.js"></script>
+<script src="assets/js/exp-voltmeter.js"></script>
+<script src="assets/js/exp-ammeter.js"></script>
+<script src="assets/js/exp-wheatstone.js"></script>
+<script src="assets/js/exp-potentiometer.js"></script>
+<script src="assets/js/exp-ac.js"></script>
+<script src="assets/js/exp-lvdt.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
