@@ -1,0 +1,90 @@
+/* Print design: A4, one experiment per page. Deep lab-teal bands, copper accents, formula cards. */
+@font-face { font-family: 'Plex Arabic'; font-weight: 400; src: url(fonts/ibm-plex-sans-arabic-arabic-400-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Plex Arabic'; font-weight: 500; src: url(fonts/ibm-plex-sans-arabic-arabic-500-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Plex Arabic'; font-weight: 600; src: url(fonts/ibm-plex-sans-arabic-arabic-600-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Plex Arabic'; font-weight: 700; src: url(fonts/ibm-plex-sans-arabic-arabic-700-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Plex Latin'; font-weight: 400; src: url(fonts/ibm-plex-sans-arabic-latin-400-normal.woff); }
+@font-face { font-family: 'Plex Latin'; font-weight: 600; src: url(fonts/ibm-plex-sans-arabic-latin-600-normal.woff); }
+@font-face { font-family: 'Readex'; font-weight: 600; src: url(fonts/readex-pro-arabic-600-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Readex'; font-weight: 700; src: url(fonts/readex-pro-arabic-700-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Readex Latin'; font-weight: 600; src: url(fonts/readex-pro-latin-600-normal.woff); }
+@font-face { font-family: 'Readex Latin'; font-weight: 700; src: url(fonts/readex-pro-latin-700-normal.woff); }
+@font-face { font-family: 'Plex Mono'; font-weight: 400; src: url(fonts/ibm-plex-mono-latin-400-normal.woff); }
+@font-face { font-family: 'Plex Mono'; font-weight: 500; src: url(fonts/ibm-plex-mono-latin-500-normal.woff); }
+@font-face { font-family: 'Plex Mono'; font-weight: 600; src: url(fonts/ibm-plex-mono-latin-600-normal.woff); }
+
+@page {
+  size: A4; margin: 14mm 14mm 16mm;
+  @bottom-center { content: counter(page) " / " counter(pages); font: 9pt 'Plex Mono'; color: #7b8c94; }
+  @bottom-right { content: "مختبر القياسات الكهربائية"; font: 8.5pt 'Plex Arabic'; color: #9aa9af; }
+}
+@page cover { margin: 0; @bottom-center { content: none; } @bottom-right { content: none; } }
+
+:root { --ink: #13212a; --ink2: #3a4b55; --muted: #6a7c85; --bench: #23393b; --accent: #0a6a84; --soft: #e6f2f5; --copper: #b0602a; --line: #d5dfe1; --paper: #f6f8f7; }
+* { box-sizing: border-box; }
+html { font-family: 'Plex Arabic', 'Plex Latin', 'DejaVu Sans', sans-serif; font-size: 10.5pt; color: var(--ink); line-height: 1.65; }
+body { margin: 0; }
+h1, h2, h3 { font-family: 'Plex Arabic', 'Plex Latin', sans-serif; font-weight: 700; margin: 0; }
+[dir="ltr"], .l { unicode-bidi: isolate; }
+.l { font-family: 'Plex Mono', monospace; font-size: 9.5pt; direction: ltr; }
+
+/* cover */
+.cover { page: cover; height: 297mm; background: var(--bench); color: #fff; padding: 30mm 22mm 0; position: relative; page-break-after: always; }
+.cover .eyebrow { font: 600 10pt 'Plex Mono'; letter-spacing: .18em; text-transform: uppercase; color: #9fd3df; direction: ltr; text-align: right; }
+.cover h1 { font-size: 34pt; line-height: 1.25; margin-top: 6mm; }
+.cover .sub { font-size: 14pt; color: #cfe3e6; margin: 4mm 0 12mm; }
+.toc { list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.18); }
+.toc li { padding: 3.2mm 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+.toc .tn { display: inline-block; width: 14mm; font: 600 16pt 'Plex Mono'; color: #ffb27a; }
+.toc .tt { font: 700 13pt 'Plex Arabic', 'Plex Latin'; }
+.toc .te { display: block; margin-right: 14mm; font: 8.5pt 'Plex Mono'; color: #9fbfc4; direction: ltr; text-align: right; }
+.cover-meter { position: absolute; bottom: 18mm; left: 22mm; }
+
+/* experiment pages */
+.exp, .final { page-break-before: always; }
+.cover + .exp { page-break-before: auto; }
+.band { background: var(--bench); color: #fff; border-radius: 4mm; padding: 4mm 5mm; display: flex; align-items: center; gap: 5mm; }
+.band .num { font: 600 24pt 'Plex Mono'; color: #ffb27a; min-width: 15mm; text-align: center; }
+.band h2 { font-size: 17pt; color: #fff; line-height: 1.3; }
+.band .en { font: 9pt 'Plex Mono'; color: #9fd3df; direction: ltr; text-align: right; }
+.idea { margin: 4mm 0 3mm; padding: 3mm 4mm; background: var(--soft); border-right: 1.2mm solid var(--accent); border-radius: 2mm; font-size: 11pt; }
+h3 { font-size: 11.5pt; color: var(--accent); margin: 3.5mm 0 2mm; }
+.grid { display: flex; gap: 5mm; align-items: flex-start; }
+.laws { flex: 1 1 52%; }
+.circ { flex: 1 1 48%; margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 3mm; padding: 2mm; text-align: center; }
+.circ svg { width: 100%; height: auto; max-height: 68mm; }
+.circ figcaption { font-size: 8.5pt; color: var(--muted); }
+.eq { background: #fff; border: 1px solid var(--line); border-radius: 2.5mm; padding: 2.2mm 3mm; margin-bottom: 2mm; }
+.eq .m { direction: ltr; text-align: center; font-family: 'Plex Mono', 'Plex Arabic'; font-size: 11.5pt; font-weight: 500; color: var(--ink); }
+.eq .note { text-align: center; font-size: 8.5pt; color: var(--copper); font-weight: 600; margin-top: .5mm; }
+.fr { display: inline-block; vertical-align: middle; text-align: center; margin: 0 1mm; }
+.fr .n, .fr .d { display: block; padding: 0 1.2mm; line-height: 1.35; }
+.fr .n { border-bottom: 1px solid var(--ink); }
+.sq .rad { border-top: 1px solid var(--ink); padding: 0 .8mm; }
+sub { font-size: 70%; }
+table.kv { width: 100%; border-collapse: collapse; margin: 3mm 0 2mm; font-size: 9.5pt; }
+table.kv th, table.kv td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: center; }
+table.kv th { background: var(--paper); color: var(--ink2); font-weight: 600; }
+table.kv tr:first-child th:first-child, table.kv td:first-child { background: var(--bench); color: #fff; font-weight: 600; }
+table.kv td { font-family: 'Plex Mono', 'Plex Arabic'; }
+.steps { font-size: 9.5pt; color: var(--ink2); background: var(--paper); border-radius: 2mm; padding: 2mm 3mm; }
+.steps b { color: var(--copper); }
+.qa { display: flex; flex-wrap: wrap; justify-content: space-between; }
+.qa .q { width: 49%; }
+.q { break-inside: avoid; display: flex; gap: 2.5mm; margin-bottom: 2.4mm; font-size: 9.5pt; }
+.qn { flex: none; width: 6mm; height: 6mm; border-radius: 50%; background: var(--copper); color: #fff; font: 600 8.5pt/6mm 'Plex Mono'; text-align: center; }
+.q b { display: block; color: var(--ink); font-weight: 600; }
+.q p { margin: .4mm 0 0; color: var(--ink2); }
+
+/* formula sheet */
+table.sum { width: 100%; border-collapse: collapse; margin-top: 5mm; }
+table.sum th { background: var(--accent); color: #fff; padding: 2.5mm; font-weight: 600; }
+table.sum td { padding: 2.6mm 3mm; border-bottom: 1px solid var(--line); }
+table.sum tr:nth-child(odd) td { background: var(--paper); }
+.sn { font-weight: 600; width: 34mm; }
+.sf { font-family: 'Plex Mono'; font-weight: 600; font-size: 11pt; color: var(--ink); text-align: left; }
+.sx { font-family: 'Plex Mono'; font-size: 9.5pt; color: var(--muted); text-align: left; }
+.chips span { display: inline-block; font: 600 10pt 'Plex Mono'; background: var(--soft); color: var(--accent); border-radius: 10mm; padding: 1.2mm 4mm; margin: 0 0 2mm 2mm; }
+.rules li { margin-bottom: 1.5mm; }
+
+table.kv th, table.kv td { unicode-bidi: plaintext; }

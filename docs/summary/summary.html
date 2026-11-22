@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>ملخص قوانين مختبر القياسات</title><style>/* Print design: A4, one experiment per page. Deep lab-teal bands, copper accents, formula cards. */
+@font-face { font-family: 'Plex Arabic'; font-weight: 400; src: url(fonts/ibm-plex-sans-arabic-arabic-400-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Plex Arabic'; font-weight: 500; src: url(fonts/ibm-plex-sans-arabic-arabic-500-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Plex Arabic'; font-weight: 600; src: url(fonts/ibm-plex-sans-arabic-arabic-600-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Plex Arabic'; font-weight: 700; src: url(fonts/ibm-plex-sans-arabic-arabic-700-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Plex Latin'; font-weight: 400; src: url(fonts/ibm-plex-sans-arabic-latin-400-normal.woff); }
+@font-face { font-family: 'Plex Latin'; font-weight: 600; src: url(fonts/ibm-plex-sans-arabic-latin-600-normal.woff); }
+@font-face { font-family: 'Readex'; font-weight: 600; src: url(fonts/readex-pro-arabic-600-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Readex'; font-weight: 700; src: url(fonts/readex-pro-arabic-700-normal.woff); unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200E, U+2010-2011, U+204F, U+2E41; }
+@font-face { font-family: 'Readex Latin'; font-weight: 600; src: url(fonts/readex-pro-latin-600-normal.woff); }
+@font-face { font-family: 'Readex Latin'; font-weight: 700; src: url(fonts/readex-pro-latin-700-normal.woff); }
+@font-face { font-family: 'Plex Mono'; font-weight: 400; src: url(fonts/ibm-plex-mono-latin-400-normal.woff); }
+@font-face { font-family: 'Plex Mono'; font-weight: 500; src: url(fonts/ibm-plex-mono-latin-500-normal.woff); }
+@font-face { font-family: 'Plex Mono'; font-weight: 600; src: url(fonts/ibm-plex-mono-latin-600-normal.woff); }
+
+@page {
+  size: A4; margin: 14mm 14mm 16mm;
+  @bottom-center { content: counter(page) " / " counter(pages); font: 9pt 'Plex Mono'; color: #7b8c94; }
+  @bottom-right { content: "مختبر القياسات الكهربائية"; font: 8.5pt 'Plex Arabic'; color: #9aa9af; }
+}
+@page cover { margin: 0; @bottom-center { content: none; } @bottom-right { content: none; } }
+
+:root { --ink: #13212a; --ink2: #3a4b55; --muted: #6a7c85; --bench: #23393b; --accent: #0a6a84; --soft: #e6f2f5; --copper: #b0602a; --line: #d5dfe1; --paper: #f6f8f7; }
+* { box-sizing: border-box; }
+html { font-family: 'Plex Arabic', 'Plex Latin', 'DejaVu Sans', sans-serif; font-size: 10.5pt; color: var(--ink); line-height: 1.65; }
+body { margin: 0; }
+h1, h2, h3 { font-family: 'Plex Arabic', 'Plex Latin', sans-serif; font-weight: 700; margin: 0; }
+[dir="ltr"], .l { unicode-bidi: isolate; }
+.l { font-family: 'Plex Mono', monospace; font-size: 9.5pt; direction: ltr; }
+
+/* cover */
+.cover { page: cover; height: 297mm; background: var(--bench); color: #fff; padding: 30mm 22mm 0; position: relative; page-break-after: always; }
+.cover .eyebrow { font: 600 10pt 'Plex Mono'; letter-spacing: .18em; text-transform: uppercase; color: #9fd3df; direction: ltr; text-align: right; }
+.cover h1 { font-size: 34pt; line-height: 1.25; margin-top: 6mm; }
+.cover .sub { font-size: 14pt; color: #cfe3e6; margin: 4mm 0 12mm; }
+.toc { list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.18); }
+.toc li { padding: 3.2mm 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+.toc .tn { display: inline-block; width: 14mm; font: 600 16pt 'Plex Mono'; color: #ffb27a; }
+.toc .tt { font: 700 13pt 'Plex Arabic', 'Plex Latin'; }
+.toc .te { display: block; margin-right: 14mm; font: 8.5pt 'Plex Mono'; color: #9fbfc4; direction: ltr; text-align: right; }
+.cover-meter { position: absolute; bottom: 18mm; left: 22mm; }
+
+/* experiment pages */
+.exp, .final { page-break-before: always; }
+.cover + .exp { page-break-before: auto; }
+.band { background: var(--bench); color: #fff; border-radius: 4mm; padding: 4mm 5mm; display: flex; align-items: center; gap: 5mm; }
+.band .num { font: 600 24pt 'Plex Mono'; color: #ffb27a; min-width: 15mm; text-align: center; }
+.band h2 { font-size: 17pt; color: #fff; line-height: 1.3; }
+.band .en { font: 9pt 'Plex Mono'; color: #9fd3df; direction: ltr; text-align: right; }
+.idea { margin: 4mm 0 3mm; padding: 3mm 4mm; background: var(--soft); border-right: 1.2mm solid var(--accent); border-radius: 2mm; font-size: 11pt; }
+h3 { font-size: 11.5pt; color: var(--accent); margin: 3.5mm 0 2mm; }
+.grid { display: flex; gap: 5mm; align-items: flex-start; }
+.laws { flex: 1 1 52%; }
+.circ { flex: 1 1 48%; margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 3mm; padding: 2mm; text-align: center; }
+.circ svg { width: 100%; height: auto; max-height: 68mm; }
+.circ figcaption { font-size: 8.5pt; color: var(--muted); }
+.eq { background: #fff; border: 1px solid var(--line); border-radius: 2.5mm; padding: 2.2mm 3mm; margin-bottom: 2mm; }
+.eq .m { direction: ltr; text-align: center; font-family: 'Plex Mono', 'Plex Arabic'; font-size: 11.5pt; font-weight: 500; color: var(--ink); }
+.eq .note { text-align: center; font-size: 8.5pt; color: var(--copper); font-weight: 600; margin-top: .5mm; }
+.fr { display: inline-block; vertical-align: middle; text-align: center; margin: 0 1mm; }
+.fr .n, .fr .d { display: block; padding: 0 1.2mm; line-height: 1.35; }
+.fr .n { border-bottom: 1px solid var(--ink); }
+.sq .rad { border-top: 1px solid var(--ink); padding: 0 .8mm; }
+sub { font-size: 70%; }
+table.kv { width: 100%; border-collapse: collapse; margin: 3mm 0 2mm; font-size: 9.5pt; }
+table.kv th, table.kv td { border: 1px solid var(--line); padding: 1.6mm 2mm; text-align: center; }
+table.kv th { background: var(--paper); color: var(--ink2); font-weight: 600; }
+table.kv tr:first-child th:first-child, table.kv td:first-child { background: var(--bench); color: #fff; font-weight: 600; }
+table.kv td { font-family: 'Plex Mono', 'Plex Arabic'; }
+.steps { font-size: 9.5pt; color: var(--ink2); background: var(--paper); border-radius: 2mm; padding: 2mm 3mm; }
+.steps b { color: var(--copper); }
+.qa { display: flex; flex-wrap: wrap; justify-content: space-between; }
+.qa .q { width: 49%; }
+.q { break-inside: avoid; display: flex; gap: 2.5mm; margin-bottom: 2.4mm; font-size: 9.5pt; }
+.qn { flex: none; width: 6mm; height: 6mm; border-radius: 50%; background: var(--copper); color: #fff; font: 600 8.5pt/6mm 'Plex Mono'; text-align: center; }
+.q b { display: block; color: var(--ink); font-weight: 600; }
+.q p { margin: .4mm 0 0; color: var(--ink2); }
+
+/* formula sheet */
+table.sum { width: 100%; border-collapse: collapse; margin-top: 5mm; }
+table.sum th { background: var(--accent); color: #fff; padding: 2.5mm; font-weight: 600; }
+table.sum td { padding: 2.6mm 3mm; border-bottom: 1px solid var(--line); }
+table.sum tr:nth-child(odd) td { background: var(--paper); }
+.sn { font-weight: 600; width: 34mm; }
+.sf { font-family: 'Plex Mono'; font-weight: 600; font-size: 11pt; color: var(--ink); text-align: left; }
+.sx { font-family: 'Plex Mono'; font-size: 9.5pt; color: var(--muted); text-align: left; }
+.chips span { display: inline-block; font: 600 10pt 'Plex Mono'; background: var(--soft); color: var(--accent); border-radius: 10mm; padding: 1.2mm 4mm; margin: 0 0 2mm 2mm; }
+.rules li { margin-bottom: 1.5mm; }
+
+table.kv th, table.kv td { unicode-bidi: plaintext; }
+</style></head>
+<body>
+<section class="cover">
+  <div class="eyebrow">Electrical Measurements Lab</div>
+  <h1>مختبر القياسات الكهربائية</h1>
+  <p class="sub">ملخص القوانين والتجارب والدوائر وأجوبة المناقشة</p>
+  <ol class="toc"><li><span class='tn'>01</span><span class='tt'>تصميم فولتميتر تيار مستمر</span><span class='te'>Designing a DC Voltmeter</span></li><li><span class='tn'>02</span><span class='tt'>تصميم أميتر تيار مستمر</span><span class='te'>Multi-Range DC Ammeter</span></li><li><span class='tn'>03</span><span class='tt'>قنطرة ويتستون</span><span class='te'>Wheatstone DC Bridge</span></li><li><span class='tn'>04</span><span class='tt'>مجزئ الجهد بالفولتميتر التناظري والرقمي</span><span class='te'>Rotary Potentiometer</span></li><li><span class='tn'>05</span><span class='tt'>قياس المحاثة</span><span class='te'>Inductive Measurement</span></li><li><span class='tn'>06</span><span class='tt'>قياس السعة</span><span class='te'>Capacitance Measurement</span></li><li><span class='tn'>07</span><span class='tt'>المحوّل التفاضلي LVDT</span><span class='te'>Linear Variable Differential Transformer</span></li></ol>
+  <div class="cover-meter"><svg viewBox="0 0 300 150" width="300" height="150"><path d="M30 140 A120 120 0 0 1 270 140" fill="none" stroke="#9fd3df" stroke-width="3"/>
+  <line x1="31.8" y1="119.2" x2="43.6" y2="121.2" stroke="#9fd3df" stroke-width="2"/><line x1="37.2" y1="99.0" x2="43.8" y2="101.4" stroke="#9fd3df" stroke-width="2"/><line x1="46.1" y1="80.0" x2="56.5" y2="86.0" stroke="#9fd3df" stroke-width="2"/><line x1="58.1" y1="62.9" x2="63.4" y2="67.4" stroke="#9fd3df" stroke-width="2"/><line x1="72.9" y1="48.1" x2="80.6" y2="57.3" stroke="#9fd3df" stroke-width="2"/><line x1="90.0" y1="36.1" x2="93.5" y2="42.1" stroke="#9fd3df" stroke-width="2"/><line x1="109.0" y1="27.2" x2="113.1" y2="38.5" stroke="#9fd3df" stroke-width="2"/><line x1="129.2" y1="21.8" x2="130.4" y2="28.7" stroke="#9fd3df" stroke-width="2"/><line x1="150.0" y1="20.0" x2="150.0" y2="32.0" stroke="#9fd3df" stroke-width="2"/><line x1="170.8" y1="21.8" x2="169.6" y2="28.7" stroke="#9fd3df" stroke-width="2"/><line x1="191.0" y1="27.2" x2="186.9" y2="38.5" stroke="#9fd3df" stroke-width="2"/><line x1="210.0" y1="36.1" x2="206.5" y2="42.1" stroke="#9fd3df" stroke-width="2"/><line x1="227.1" y1="48.1" x2="219.4" y2="57.3" stroke="#9fd3df" stroke-width="2"/><line x1="241.9" y1="62.9" x2="236.6" y2="67.4" stroke="#9fd3df" stroke-width="2"/><line x1="253.9" y1="80.0" x2="243.5" y2="86.0" stroke="#9fd3df" stroke-width="2"/><line x1="262.8" y1="99.0" x2="256.2" y2="101.4" stroke="#9fd3df" stroke-width="2"/><line x1="268.2" y1="119.2" x2="256.4" y2="121.2" stroke="#9fd3df" stroke-width="2"/>
+  <line x1="150" y1="140" x2="214" y2="44" stroke="#ff6b5b" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="140" r="7" fill="#e8f3f5"/></svg></div>
+</section>
+
+<section class="exp">
+  <header class="band">
+    <div class="num">01</div>
+    <div><h2>تصميم فولتميتر تيار مستمر</h2><div class="en">Designing a DC Voltmeter</div></div>
+  </header>
+  <p class="idea">الجلفانوميتر ينحرف انحرافاً كاملاً عند 0.3 V فقط. نضع معه على التوالي مقاومة كبيرة Rs تأخذ الجهد الزائد، فيصبح فولتميتر بالمدى الذي نريده.</p>
+  <div class="grid">
+    <div class="laws"><h3>القوانين</h3><div class="eq"><div class="m" dir="ltr">I<sub>g</sub> = <span class="fr"><span class="n">V<sub>g</sub></span><span class="d">R<sub>g</sub></span></span> = <span class="fr"><span class="n">0.3</span><span class="d">6000</span></span> = 50 µA</div><div class=note>تيار الانحراف الكامل</div></div><div class="eq"><div class="m" dir="ltr">R<sub>s</sub> = <span class="fr"><span class="n">V<sub>f</sub></span><span class="d">I<sub>g</sub></span></span> − R<sub>g</sub></div><div class=note>مقاومة التوالي لكل مدى</div></div><div class="eq"><div class="m" dir="ltr">S = <span class="fr"><span class="n">1</span><span class="d">I<sub>g</sub></span></span> = 20 kΩ/V</div><div class=note>حساسية الجهاز</div></div></div>
+    <figure class="circ"><svg class="schem " viewBox="0 0 520 310" role="img" aria-label="دائرة الفولتميتر متعدد المديات"><style>
+.w{fill:none;stroke:#2b3a44;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.w.thin{stroke-width:1.5}.w.plate{stroke-width:4}.w.active,.comp.active .w{stroke:#0a6a84;stroke-width:2.6}
+.redlead{stroke:#c62828}.body{fill:#ffffff}.node{fill:#2b3a44}.term{fill:#fff;stroke:#2b3a44;stroke-width:2}
+.lbl{fill:#13212a;font-family:'Plex Mono';font-size:13px;font-weight:500}.lbl.sub{fill:#627580;font-size:11.5px}
+.lbl.acc{fill:#0a6a84;font-weight:600}.lbl.big{font-size:15px;font-weight:600}.lbl.cop{fill:#b0602a;font-weight:600}
+.mlet{fill:#13212a;font-family:'Plex Mono';font-size:15px;font-weight:700}.arrow-fill{fill:#2b3a44}.flow{display:none}
+</style><defs><marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b3a44"/></marker></defs><text x="250" y="24" class="lbl sub" text-anchor="middle">Rg = 6000 Ω   Vg = 0.3 V</text><polyline class="w " points="232.0,52.0 60.0,52.0 60.0,262.0"></polyline><polyline class="w " points="268.0,52.0 480.0,52.0 480.0,220.0"></polyline><polyline class="w " points="300.0,100.0 340.0,100.0"></polyline><g class="comp "><g transform="translate(340 100) rotate(0.000)"><path class="w" d="M0 0 L34.0 0 L37.5 -6 L44.5 6 L51.5 -6 L58.5 6 L65.5 -6 L72.5 6 L76.0 0 L110.0 0"></path></g><text x="405" y="87" class="lbl " text-anchor="middle">Rs1 = 54 kΩ</text></g><polyline class="w " points="450.0,100.0 480.0,100.0"></polyline><circle class="node" cx="480" cy="100" r="3.3"></circle><circle class="term" cx="300" cy="100" r="4.2"></circle><text x="306" y="93" class="lbl " text-anchor="start">3 V</text><polyline class="w " points="300.0,140.0 340.0,140.0"></polyline><g class="comp "><g transform="translate(340 140) rotate(0.000)"><path class="w" d="M0 0 L34.0 0 L37.5 -6 L44.5 6 L51.5 -6 L58.5 6 L65.5 -6 L72.5 6 L76.0 0 L110.0 0"></path></g><text x="405" y="127" class="lbl " text-anchor="middle">Rs2 = 114 kΩ</text></g><polyline class="w " points="450.0,140.0 480.0,140.0"></polyline><circle class="node" cx="480" cy="140" r="3.3"></circle><circle class="term" cx="300" cy="140" r="4.2"></circle><text x="306" y="133" class="lbl " text-anchor="start">6 V</text><polyline class="w " points="300.0,180.0 340.0,180.0"></polyline><g class="comp active"><g transform="translate(340 180) rotate(0.000)"><path class="w" d="M0 0 L34.0 0 L37.5 -6 L44.5 6 L51.5 -6 L58.5 6 L65.5 -6 L72.5 6 L76.0 0 L110.0 0"></path></g><text x="405" y="167" class="lbl " text-anchor="middle">Rs3 = 174 kΩ</text></g><polyline class="w " points="450.0,180.0 480.0,180.0"></polyline><circle class="node" cx="480" cy="180" r="3.3"></circle><circle class="term" cx="300" cy="180" r="4.2"></circle><text x="306" y="173" class="lbl " text-anchor="start">9 V</text><polyline class="w " points="300.0,220.0 340.0,220.0"></polyline><g class="comp "><g transform="translate(340 220) rotate(0.000)"><path class="w" d="M0 0 L34.0 0 L37.5 -6 L44.5 6 L51.5 -6 L58.5 6 L65.5 -6 L72.5 6 L76.0 0 L110.0 0"></path></g><text x="405" y="207" class="lbl " text-anchor="middle">Rs4 = 234 kΩ</text></g><polyline class="w " points="450.0,220.0 480.0,220.0"></polyline><circle class="term" cx="300" cy="220" r="4.2"></circle><text x="306" y="213" class="lbl " text-anchor="start">12 V</text><line class="w active" x1="205" y1="250" x2="292" y2="180"></line><circle class="node" cx="205" cy="250" r="3.3"></circle><polyline class="w redlead" points="205.0,250.0 205.0,290.0"></polyline><polyline class="w " points="60.0,262.0 60.0,290.0 120.0,290.0"></polyline><g class="comp "><g transform="translate(160 290) rotate(180.000)"><path class="w" d="M0 0 L16 0 M24 0 L40 0"></path><path class="w" d="M16 -15 L16 15"></path><path class="w plate" d="M24 -8 L24 8"></path><path class="w thin" d="M4 -20 L12 -20 M8 -24 L8 -16"></path></g><text x="140" y="272" class="lbl " text-anchor="middle">Vs</text></g><polyline class="w redlead" points="160.0,290.0 205.0,290.0"></polyline><g class="comp "><circle class="w body" cx="250" cy="52" r="17"></circle><line class="w thin" x1="242" y1="60" x2="258" y2="44" marker-end="url(#arrowhead)"></line></g></svg><figcaption>مخطط الدائرة</figcaption></figure>
+  </div>
+  <table class='kv'><tr><th>المدى Vf</th><th><span dir="ltr" style="unicode-bidi:isolate">3 V</span></th><th><span dir="ltr" style="unicode-bidi:isolate">6 V</span></th><th><span dir="ltr" style="unicode-bidi:isolate">9 V</span></th><th><span dir="ltr" style="unicode-bidi:isolate">12 V</span></th></tr><tr><td><span dir="ltr" style="unicode-bidi:isolate">Rs</span></td><td><span dir="ltr" style="unicode-bidi:isolate">54 kΩ</span></td><td><span dir="ltr" style="unicode-bidi:isolate">114 kΩ</span></td><td><span dir="ltr" style="unicode-bidi:isolate">174 kΩ</span></td><td><span dir="ltr" style="unicode-bidi:isolate">234 kΩ</span></td></tr></table>
+  <div class="steps"><b>الخطوات:</b> وصّل الجلفانوميتر مع Rs ← سلّط جهداً متغيراً ← سجّل الجهد عند انحراف 25، 50، 75، 100% ← قارن بفولتميتر جاهز.</div>
+  <h3>أسئلة المناقشة</h3>
+  <div class="qa"><div class='q'><span class='qn'>1</span><div><b>لماذا نحتاج مقاومة توالٍ؟</b><p>الجلفانوميتر يتحمل 0.3 V فقط؛ Rs تأخذ الجهد الزائد وتحدّ التيار.</p></div></div><div class='q'><span class='qn'>2</span><div><b>كيف حددنا Rs؟</b><p>بقانون أوم: <span class="l" dir="ltr">Rs = Vf/Ig − Rg</span>، مثلاً 3 V ← 54 kΩ.</p></div></div><div class='q'><span class='qn'>3</span><div><b>ماذا لو كانت Rs أصغر؟</b><p>يمر تيار أكبر: قراءة أعلى من الحقيقية، تجاوز التدريج، وقد يتلف الملف.</p></div></div><div class='q'><span class='qn'>4</span><div><b>أهمية المقاومة الداخلية؟</b><p>كلما كبرت قلّ التيار المسحوب من الدائرة وقلّ خطأ التحميل.</p></div></div><div class='q'><span class='qn'>5</span><div><b>تصميم مدى 8 V؟</b><p><span class="l" dir="ltr">Rs = 8/50µA − 6000 = 154 kΩ</span></p></div></div></div>
+</section>
+<section class="exp">
+  <header class="band">
+    <div class="num">02</div>
+    <div><h2>تصميم أميتر تيار مستمر</h2><div class="en">Multi-Range DC Ammeter</div></div>
+  </header>
+  <p class="idea">نضع مقاومة صغيرة (شنت Rsh) على التوازي مع الجلفانوميتر فتمرر معظم التيار، ولا يمر في الملف أكثر من 50 µA.</p>
+  <div class="grid">
+    <div class="laws"><h3>القوانين</h3><div class="eq"><div class="m" dir="ltr">R<sub>g</sub> = <span class="fr"><span class="n">V<sub>g</sub></span><span class="d">I<sub>g</sub></span></span> = <span class="fr"><span class="n">0.3</span><span class="d">50 µA</span></span> = 6000 Ω</div></div><div class="eq"><div class="m" dir="ltr">I = I<sub>g</sub> + I<sub>sh</sub></div><div class=note>تقسيم التيار</div></div><div class="eq"><div class="m" dir="ltr">R<sub>sh</sub> = <span class="fr"><span class="n">V<sub>g</sub></span><span class="d">I − I<sub>g</sub></span></span> = <span class="fr"><span class="n">R<sub>g</sub></span><span class="d">m − 1</span></span></div><div class=note>m = I / Ig</div></div></div>
+    <figure class="circ"><svg class="schem " viewBox="0 0 570 290" role="img" aria-label="دائرة الأميتر"><style>
+.w{fill:none;stroke:#2b3a44;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.w.thin{stroke-width:1.5}.w.plate{stroke-width:4}.w.active,.comp.active .w{stroke:#0a6a84;stroke-width:2.6}
+.redlead{stroke:#c62828}.body{fill:#ffffff}.node{fill:#2b3a44}.term{fill:#fff;stroke:#2b3a44;stroke-width:2}
+.lbl{fill:#13212a;font-family:'Plex Mono';font-size:13px;font-weight:500}.lbl.sub{fill:#627580;font-size:11.5px}
+.lbl.acc{fill:#0a6a84;font-weight:600}.lbl.big{font-size:15px;font-weight:600}.lbl.cop{fill:#b0602a;font-weight:600}
+.mlet{fill:#13212a;font-family:'Plex Mono';font-size:15px;font-weight:700}.arrow-fill{fill:#2b3a44}.flow{display:none}
+</style><defs><marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b3a44"/></marker></defs><polyline class="w " points="50.0,122.0 50.0,50.0 85.0,50.0"></polyline><g class="comp "><g transform="translate(85 50) rotate(0.000)"><path class="w" d="M0 0 L19.0 0 L22.5 -6 L29.5 6 L36.5 -6 L43.5 6 L50.5 -6 L57.5 6 L61.0 0 L80.0 0"></path></g><text x="125" y="34" class="lbl " text-anchor="middle">R load 1 kΩ</text></g><polyline class="w " points="165.0,50.0 520.0,50.0 520.0,142.0"></polyline><circle class="node" cx="450" cy="50" r="3.3"></circle><polyline class="w " points="450.0,50.0 450.0,82.0"></polyline><g class="comp "><g transform="translate(450 82) rotate(90.000)"><path class="w" d="M0 0 L13.0 0 L16.5 -6 L23.5 6 L30.5 -6 L37.5 6 L44.5 -6 L51.5 6 L55.0 0 L68.0 0"></path></g><text x="461" y="120" class="lbl " text-anchor="start">Rsh1</text></g><polyline class="w " points="450.0,150.0 450.0,172.0"></polyline><circle class="term" cx="450" cy="176" r="4.2"></circle><circle class="node" cx="380" cy="50" r="3.3"></circle><polyline class="w " points="380.0,50.0 380.0,82.0"></polyline><g class="comp "><g transform="translate(380 82) rotate(90.000)"><path class="w" d="M0 0 L13.0 0 L16.5 -6 L23.5 6 L30.5 -6 L37.5 6 L44.5 -6 L51.5 6 L55.0 0 L68.0 0"></path></g><text x="391" y="120" class="lbl " text-anchor="start">Rsh2</text></g><polyline class="w " points="380.0,150.0 380.0,172.0"></polyline><circle class="term" cx="380" cy="176" r="4.2"></circle><circle class="node" cx="310" cy="50" r="3.3"></circle><polyline class="w " points="310.0,50.0 310.0,82.0"></polyline><g class="comp "><g transform="translate(310 82) rotate(90.000)"><path class="w" d="M0 0 L13.0 0 L16.5 -6 L23.5 6 L30.5 -6 L37.5 6 L44.5 -6 L51.5 6 L55.0 0 L68.0 0"></path></g><text x="321" y="120" class="lbl " text-anchor="start">Rsh3</text></g><polyline class="w " points="310.0,150.0 310.0,172.0"></polyline><circle class="term" cx="310" cy="176" r="4.2"></circle><circle class="node" cx="240" cy="50" r="3.3"></circle><polyline class="w " points="240.0,50.0 240.0,82.0"></polyline><g class="comp "><g transform="translate(240 82) rotate(90.000)"><path class="w" d="M0 0 L13.0 0 L16.5 -6 L23.5 6 L30.5 -6 L37.5 6 L44.5 -6 L51.5 6 L55.0 0 L68.0 0"></path></g><text x="251" y="120" class="lbl " text-anchor="start">Rsh4</text></g><polyline class="w " points="240.0,150.0 240.0,172.0"></polyline><circle class="term" cx="240" cy="176" r="4.2"></circle><line class="w active" x1="345" y1="245" x2="447" y2="180"></line><circle class="node" cx="345" cy="245" r="3.3"></circle><polyline class="w " points="345.0,245.0 345.0,272.0"></polyline><polyline class="w " points="520.0,178.0 520.0,272.0 50.0,272.0 50.0,168.0"></polyline><circle class="node" cx="345" cy="272" r="3.3"></circle><g class="comp "><g transform="translate(50 122) rotate(90.000)"><path class="w" d="M0 0 L19 0 M27 0 L46 0"></path><path class="w" d="M19 -15 L19 15"></path><path class="w plate" d="M27 -8 L27 8"></path><path class="w thin" d="M7 -20 L15 -20 M11 -24 L11 -16"></path></g><text x="36" y="149" class="lbl " text-anchor="end">Vs</text></g><g class="comp "><circle class="w body" cx="520" cy="160" r="17"></circle><line class="w thin" x1="512" y1="168" x2="528" y2="152" marker-end="url(#arrowhead)"></line></g></svg><figcaption>مخطط الدائرة</figcaption></figure>
+  </div>
+  <table class='kv'><tr><th>المدى</th><th><span dir="ltr" style="unicode-bidi:isolate">3 mA</span></th><th><span dir="ltr" style="unicode-bidi:isolate">6 mA</span></th><th><span dir="ltr" style="unicode-bidi:isolate">9 mA</span></th><th><span dir="ltr" style="unicode-bidi:isolate">12 mA</span></th></tr><tr><td><span dir="ltr" style="unicode-bidi:isolate">Rsh</span></td><td><span dir="ltr" style="unicode-bidi:isolate">101.7 Ω</span></td><td><span dir="ltr" style="unicode-bidi:isolate">50.42 Ω</span></td><td><span dir="ltr" style="unicode-bidi:isolate">33.52 Ω</span></td><td><span dir="ltr" style="unicode-bidi:isolate">25.10 Ω</span></td></tr></table>
+  <div class="steps"><b>الخطوات:</b> المجهز ← الحمل 1 kΩ ← (الجلفانوميتر ∥ الشنت) ← سجّل الانحراف الكامل لكل مدى وقارن بأميتر مرجعي.</div>
+  <h3>أسئلة المناقشة</h3>
+  <div class="qa"><div class='q'><span class='qn'>1</span><div><b>كيف تُحدَّد مقاومة الجلفانوميتر؟</b><p><span class="l" dir="ltr">Rg = 0.3/50µA = 6000 Ω</span>، أو عملياً بطريقة نصف الانحراف.</p></div></div><div class='q'><span class='qn'>2</span><div><b>لماذا نحتاج الشنت؟</b><p>الملف يتحمل 50 µA فقط؛ الشنت يمرر الباقي فيتوسع المدى.</p></div></div><div class='q'><span class='qn'>3</span><div><b>ما معادلة الشنت؟</b><p><span class="l" dir="ltr">Rsh = Vg / (I − Ig)</span></p></div></div><div class='q'><span class='qn'>4</span><div><b>مصادر الخطأ؟</b><p>سماحية الشنت، مقاومة التلامس والأسلاك، الحرارة، مقاومة الأميتر نفسه، قراءة المؤشر.</p></div></div></div>
+</section>
+<section class="exp">
+  <header class="band">
+    <div class="num">03</div>
+    <div><h2>قنطرة ويتستون</h2><div class="en">Wheatstone DC Bridge</div></div>
+  </header>
+  <p class="idea">مقسّما جهد على التوازي. نغيّر Rv حتى يتساوى جهد D و B فيقرأ الفولتميتر صفراً (اتزان). في عدم الاتزان نحسب المجهولة من قراءة Vo.</p>
+  <div class="grid">
+    <div class="laws"><h3>القوانين</h3><div class="eq"><div class="m" dir="ltr"><span class="fr"><span class="n">R<sub>3</sub></span><span class="d">R<sub>u</sub></span></span> = <span class="fr"><span class="n">R<sub>2</sub></span><span class="d">R<sub>v</sub></span></span> &nbsp;⟹&nbsp; R<sub>u</sub> = <span class="fr"><span class="n">R<sub>3</sub> R<sub>v</sub></span><span class="d">R<sub>2</sub></span></span></div><div class=note>شرط الاتزان</div></div><div class="eq"><div class="m" dir="ltr">V<sub>o</sub> = V ( <span class="fr"><span class="n">R<sub>x</sub></span><span class="d">R<sub>x</sub> + R<sub>3</sub></span></span> − <span class="fr"><span class="n">R<sub>1</sub></span><span class="d">R<sub>1</sub> + R<sub>2</sub></span></span> )</div><div class=note>عدم الاتزان</div></div><div class="eq"><div class="m" dir="ltr">k = <span class="fr"><span class="n">V<sub>o</sub></span><span class="d">V</span></span> + <span class="fr"><span class="n">R<sub>1</sub></span><span class="d">R<sub>1</sub>+R<sub>2</sub></span></span> , &nbsp; R<sub>x</sub> = <span class="fr"><span class="n">k R<sub>3</sub></span><span class="d">1 − k</span></span> , &nbsp; R<sub>u</sub> = R<sub>x</sub> − R<sub>4</sub></div></div></div>
+    <figure class="circ"><svg class="schem " viewBox="0 0 552 336" role="img" aria-label="قنطرة ويتستون"><style>
+.w{fill:none;stroke:#2b3a44;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.w.thin{stroke-width:1.5}.w.plate{stroke-width:4}.w.active,.comp.active .w{stroke:#0a6a84;stroke-width:2.6}
+.redlead{stroke:#c62828}.body{fill:#ffffff}.node{fill:#2b3a44}.term{fill:#fff;stroke:#2b3a44;stroke-width:2}
+.lbl{fill:#13212a;font-family:'Plex Mono';font-size:13px;font-weight:500}.lbl.sub{fill:#627580;font-size:11.5px}
+.lbl.acc{fill:#0a6a84;font-weight:600}.lbl.big{font-size:15px;font-weight:600}.lbl.cop{fill:#b0602a;font-weight:600}
+.mlet{fill:#13212a;font-family:'Plex Mono';font-size:15px;font-weight:700}.arrow-fill{fill:#2b3a44}.flow{display:none}
+</style><defs><marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b3a44"/></marker></defs><polyline class="w " points="260.0,42.0 260.0,16.0 490.0,16.0 490.0,140.0"></polyline><polyline class="w " points="490.0,204.0 490.0,322.0 260.0,322.0 260.0,302.0"></polyline><g class="comp "><g transform="translate(490 204) rotate(-90.000)"><path class="w" d="M0 0 L28 0 M36 0 L64 0"></path><path class="w" d="M28 -15 L28 15"></path><path class="w plate" d="M36 -8 L36 8"></path><path class="w thin" d="M16 -20 L24 -20 M20 -24 L20 -16"></path></g><text x="514" y="176" class="lbl " text-anchor="start">V</text></g><g class="comp "><g transform="translate(110 172) rotate(-40.914)"><path class="w" d="M0 0 L72.2 0 L75.6 -6 L82.4 6 L89.1 -6 L95.9 6 L102.6 -6 L109.4 6 L116.1 -6 L122.9 6 L126.2 0 L198.5 0"></path></g></g><text x="168" y="96" class="lbl big" text-anchor="end">Ru</text><g class="comp "><g transform="translate(260 42) rotate(40.914)"><path class="w" d="M0 0 L72.2 0 L75.6 -6 L82.4 6 L89.1 -6 L95.9 6 L102.6 -6 L109.4 6 L116.1 -6 L122.9 6 L126.2 0 L198.5 0"></path><line class="w thin" x1="74.2" y1="13" x2="124.2" y2="-14" marker-end="url(#arrowhead)"></line></g></g><text x="352" y="96" class="lbl big" text-anchor="start">Rv</text><g class="comp "><g transform="translate(110 172) rotate(40.914)"><path class="w" d="M0 0 L72.2 0 L75.6 -6 L82.4 6 L89.1 -6 L95.9 6 L102.6 -6 L109.4 6 L116.1 -6 L122.9 6 L126.2 0 L198.5 0"></path></g></g><g class="comp "><g transform="translate(410 172) rotate(139.086)"><path class="w" d="M0 0 L72.2 0 L75.6 -6 L82.4 6 L89.1 -6 L95.9 6 L102.6 -6 L109.4 6 L116.1 -6 L122.9 6 L126.2 0 L198.5 0"></path></g></g><text x="166" y="264" class="lbl big" text-anchor="end">R3</text><text x="354" y="264" class="lbl big" text-anchor="start">R2</text><polyline class="w " points="110.0,172.0 241.0,172.0"></polyline><polyline class="w " points="279.0,172.0 410.0,172.0"></polyline><g class="comp "><circle class="w body" cx="260" cy="172" r="17"></circle><text x="260" y="177" class="mlet" text-anchor="middle">V</text><text x="260" y="206" class="lbl " text-anchor="middle">Vo</text></g><circle class="node" cx="260" cy="42" r="3.3"></circle><text x="260" y="34" class="lbl big acc" text-anchor="middle">A</text><circle class="node" cx="110" cy="172" r="3.3"></circle><text x="96" y="176" class="lbl big acc" text-anchor="end">D</text><circle class="node" cx="410" cy="172" r="3.3"></circle><text x="424" y="176" class="lbl big acc" text-anchor="start">B</text><circle class="node" cx="260" cy="302" r="3.3"></circle><text x="248" y="318" class="lbl big acc" text-anchor="end">C</text></svg><figcaption>مخطط الدائرة</figcaption></figure>
+  </div>
+  <table class='kv'><tr><th>المقاومة</th><th><span dir="ltr" style="unicode-bidi:isolate">< 1 Ω</span></th><th><span dir="ltr" style="unicode-bidi:isolate">1 Ω – 100 kΩ</span></th><th><span dir="ltr" style="unicode-bidi:isolate">> 100 kΩ</span></th></tr><tr><td>الطريقة</td><td>قنطرة كلفن</td><td>ويتستون / أوميتر</td><td>الميغر</td></tr></table>
+  <div class="steps"><b>الخطوات:</b> المجهز بين A و C ← صندوق المقاومات في ذراع Rv ← الفولتميتر بين D و B ← غيّر Rv حتى الصفر وسجّل.</div>
+  <h3>أسئلة المناقشة</h3>
+  <div class="qa"><div class='q'><span class='qn'>1</span><div><b>مبدأ القنطرة؟</b><p>مقارنة صفرية: نغيّر Rv حتى ينعدم فرق الجهد بين D و B.</p></div></div><div class='q'><span class='qn'>2</span><div><b>شرط الاتزان؟</b><p><span class="l" dir="ltr">Ru · R2 = R3 · Rv</span></p></div></div><div class='q'><span class='qn'>3</span><div><b>تحسين الدقة؟</b><p>مقاومات دقيقة، كاشف حساس، نسبة أذرع مناسبة، أسلاك قصيرة، تكرار القياس.</p></div></div><div class='q'><span class='qn'>4</span><div><b>هل تعمل مع AC؟</b><p>نعم بممانعات وكاشف متناوب: <span class="l" dir="ltr">Z1·Z4 = Z2·Z3</span>.</p></div></div><div class='q'><span class='qn'>5</span><div><b>لماذا لا تناسب المقاومات الصغيرة؟</b><p>مقاومة الأسلاك والتلامس بحجم المقاسة؛ نستخدم قنطرة كلفن.</p></div></div><div class='q'><span class='qn'>6</span><div><b>قياس عزل كابل؟</b><p>بالميغر (Megger).</p></div></div><div class='q'><span class='qn'>7</span><div><b>تدريج الأوميتر معكوس وغير خطي؟</b><p><span class="l" dir="ltr">I = E/(Rint + Rx)</span>: أكبر تيار عند الصفر (يمين)، والعلاقة عكسية.</p></div></div></div>
+</section>
+<section class="exp">
+  <header class="band">
+    <div class="num">04</div>
+    <div><h2>مجزئ الجهد بالفولتميتر التناظري والرقمي</h2><div class="en">Rotary Potentiometer</div></div>
+  </header>
+  <p class="idea">الجهد بين الذراع W والطرف A يزداد مع الدوران. الفولتميتر يسحب تياراً فيخفض القراءة (تأثير التحميل)، والتناظري يتأثر أكثر من الرقمي.</p>
+  <div class="grid">
+    <div class="laws"><h3>القوانين</h3><div class="eq"><div class="m" dir="ltr">R<sub>AW</sub> = x · R<sub>T</sub> , &nbsp; V<sub>out</sub> = x · V<sub>s</sub></div><div class=note>القيمة النظرية (x من 0 إلى 1)</div></div><div class="eq"><div class="m" dir="ltr">V<sub>out</sub> = x V<sub>s</sub> · <span class="fr"><span class="n">R<sub>m</sub></span><span class="d">R<sub>m</sub> + x(1−x) R<sub>T</sub></span></span></div><div class=note>مع التحميل</div></div><div class="eq"><div class="m" dir="ltr">R<sub>m</sub> (تناظري) = S × المدى &nbsp;,&nbsp; R<sub>m</sub> (رقمي) ≈ 10 MΩ</div></div></div>
+    <figure class="circ"><svg class="schem " viewBox="0 0 500 290" role="img" aria-label="دائرة مجزئ الجهد"><style>
+.w{fill:none;stroke:#2b3a44;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.w.thin{stroke-width:1.5}.w.plate{stroke-width:4}.w.active,.comp.active .w{stroke:#0a6a84;stroke-width:2.6}
+.redlead{stroke:#c62828}.body{fill:#ffffff}.node{fill:#2b3a44}.term{fill:#fff;stroke:#2b3a44;stroke-width:2}
+.lbl{fill:#13212a;font-family:'Plex Mono';font-size:13px;font-weight:500}.lbl.sub{fill:#627580;font-size:11.5px}
+.lbl.acc{fill:#0a6a84;font-weight:600}.lbl.big{font-size:15px;font-weight:600}.lbl.cop{fill:#b0602a;font-weight:600}
+.mlet{fill:#13212a;font-family:'Plex Mono';font-size:15px;font-weight:700}.arrow-fill{fill:#2b3a44}.flow{display:none}
+</style><defs><marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b3a44"/></marker></defs><polyline class="w " points="60.0,112.0 60.0,50.0 200.0,50.0"></polyline><polyline class="w " points="200.0,250.0 60.0,250.0 60.0,188.0"></polyline><g class="comp "><g transform="translate(60 112) rotate(90.000)"><path class="w" d="M0 0 L34 0 M42 0 L76 0"></path><path class="w" d="M34 -15 L34 15"></path><path class="w plate" d="M42 -8 L42 8"></path><path class="w thin" d="M22 -20 L30 -20 M26 -24 L26 -16"></path></g><text x="44" y="154" class="lbl " text-anchor="end">Vs = 5 V</text></g><g class="comp "><g transform="translate(200 50) rotate(90.000)"><path class="w" d="M0 0 L25.0 0 L28.8 -6 L36.3 6 L43.8 -6 L51.3 6 L58.8 -6 L66.3 6 L73.8 -6 L81.3 6 L88.8 -6 L96.3 6 L103.8 -6 L111.3 6 L118.8 -6 L126.3 6 L133.8 -6 L141.3 6 L148.8 -6 L156.3 6 L163.8 -6 L171.3 6 L175.0 0 L200.0 0"></path></g></g><path class="w" d="M60 250 L60 257 M49 257 L71 257 M53 261 L67 261 M57 265 L63 265"></path><circle class="node" cx="200" cy="50" r="3.3"></circle><text x="212" y="44" class="lbl " text-anchor="start">B (+)</text><circle class="node" cx="200" cy="250" r="3.3"></circle><text x="212" y="268" class="lbl " text-anchor="start">A (GND)</text><line class="w" x1="252" y1="150" x2="212" y2="150" marker-end="url(#arrowhead)"></line><text x="258" y="142" class="lbl acc big" text-anchor="start">W</text><polyline class="w " points="252.0,150.0 400.0,150.0 400.0,183.0"></polyline><polyline class="w " points="400.0,217.0 400.0,250.0 200.0,250.0"></polyline><g class="comp "><circle class="w body" cx="400" cy="200" r="17"></circle><text x="400" y="205" class="mlet" text-anchor="middle">V</text><text x="424" y="204" class="lbl sub" text-anchor="start">Voltmeter</text></g></svg><figcaption>مخطط الدائرة</figcaption></figure>
+  </div>
+  <table class='kv'><tr><th>الموضع</th><th><span dir="ltr" style="unicode-bidi:isolate">0%</span></th><th><span dir="ltr" style="unicode-bidi:isolate">25%</span></th><th><span dir="ltr" style="unicode-bidi:isolate">50%</span></th><th><span dir="ltr" style="unicode-bidi:isolate">75%</span></th><th><span dir="ltr" style="unicode-bidi:isolate">100%</span></th></tr><tr><td>الزاوية</td><td><span dir="ltr" style="unicode-bidi:isolate">0°</span></td><td><span dir="ltr" style="unicode-bidi:isolate">68°</span></td><td><span dir="ltr" style="unicode-bidi:isolate">135°</span></td><td><span dir="ltr" style="unicode-bidi:isolate">203°</span></td><td><span dir="ltr" style="unicode-bidi:isolate">270°</span></td></tr></table>
+  <div class="steps"><b>الخطوات:</b> قِس RT و RAW بالأوميتر والمجهز مفصول ← وصّل 5 V بين B و A ← اقرأ بالتناظري ثم بالرقمي ← ارسم Vout مقابل x.</div>
+  <h3>أسئلة المناقشة</h3>
+  <div class="qa"><div class='q'><span class='qn'>1</span><div><b>لماذا اختلف الجهازان؟</b><p>التحميل: مقاومة التناظري قريبة من مقاومة المجزئ، والرقمي 10 MΩ.</p></div></div><div class='q'><span class='qn'>2</span><div><b>أين الفرق أكبر؟</b><p>المطلق عند 75%، والنسبي عند 50%، ولا فرق عند 0% و100%.</p></div></div><div class='q'><span class='qn'>3</span><div><b>خطي أم لوغاريتمي؟</b><p>خطي: القراءات بخطوات متساوية على خط مستقيم.</p></div></div><div class='q'><span class='qn'>4</span><div><b>الدقة والضبط والتمييز؟</b><p>قرب القراءة من الحقيقة، تقارب القراءات المتكررة، أصغر تغيّر يظهر. الرقمي أفضل.</p></div></div><div class='q'><span class='qn'>5</span><div><b>ميزتا التناظري؟</b><p>يُظهر اتجاه التغيّر باستمرار، ولا يحتاج بطارية لقياس الجهد.</p></div></div></div>
+</section>
+<section class="exp">
+  <header class="band">
+    <div class="num">05</div>
+    <div><h2>قياس المحاثة</h2><div class="en">Inductive Measurement</div></div>
+  </header>
+  <p class="idea">نغيّر R حتى يتساوى الجهد عليها مع الجهد على الملف. التيار واحد، فتتساوى ممانعة الملف مع R، ومنها نحسب L.</p>
+  <div class="grid">
+    <div class="laws"><h3>القوانين</h3><div class="eq"><div class="m" dir="ltr">X<sub>L</sub> = 2πfL</div><div class=note>الرادة الحثية</div></div><div class="eq"><div class="m" dir="ltr">V<sub>R</sub> = V<sub>L</sub> &nbsp;⟹&nbsp; R = <span class="sq">√<span class="rad">r² + X<sub>L</sub>²</span></span></div></div><div class="eq"><div class="m" dir="ltr">L = <span class="fr"><span class="n"><span class="sq">√<span class="rad">R² − r²</span></span></span><span class="d">2πf</span></span></div><div class=note>r مقاومة سلك الملف</div></div></div>
+    <figure class="circ"><svg class="schem " viewBox="0 0 450 290" role="img" aria-label="مخطط الدائرة"><style>
+.w{fill:none;stroke:#2b3a44;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.w.thin{stroke-width:1.5}.w.plate{stroke-width:4}.w.active,.comp.active .w{stroke:#0a6a84;stroke-width:2.6}
+.redlead{stroke:#c62828}.body{fill:#ffffff}.node{fill:#2b3a44}.term{fill:#fff;stroke:#2b3a44;stroke-width:2}
+.lbl{fill:#13212a;font-family:'Plex Mono';font-size:13px;font-weight:500}.lbl.sub{fill:#627580;font-size:11.5px}
+.lbl.acc{fill:#0a6a84;font-weight:600}.lbl.big{font-size:15px;font-weight:600}.lbl.cop{fill:#b0602a;font-weight:600}
+.mlet{fill:#13212a;font-family:'Plex Mono';font-size:15px;font-weight:700}.arrow-fill{fill:#2b3a44}.flow{display:none}
+</style><defs><marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b3a44"/></marker></defs><polyline class="w " points="70.0,132.0 70.0,40.0 250.0,40.0"></polyline><polyline class="w " points="250.0,260.0 70.0,260.0 70.0,168.0"></polyline><g class="comp "><g transform="translate(250 40) rotate(90.000)"><path class="w" d="M0 0 L33.0 0 a5.50 5.50 0 0 1 11.00 0 a5.50 5.50 0 0 1 11.00 0 a5.50 5.50 0 0 1 11.00 0 a5.50 5.50 0 0 1 11.00 0 L110.0 0"></path></g><text x="234" y="99" class="lbl " text-anchor="end">L (r)</text></g><g class="comp "><g transform="translate(250 150) rotate(90.000)"><path class="w" d="M0 0 L34.0 0 L37.5 -6 L44.5 6 L51.5 -6 L58.5 6 L65.5 -6 L72.5 6 L76.0 0 L110.0 0"></path><line class="w thin" x1="36.0" y1="13" x2="74.0" y2="-14" marker-end="url(#arrowhead)"></line></g><text x="232" y="209" class="lbl " text-anchor="end">R</text></g><circle class="node" cx="250" cy="40" r="3.3"></circle><circle class="node" cx="250" cy="150" r="3.3"></circle><circle class="node" cx="250" cy="260" r="3.3"></circle><polyline class="w " points="250.0,40.0 370.0,40.0 370.0,78.0"></polyline><polyline class="w " points="370.0,112.0 370.0,188.0"></polyline><polyline class="w " points="370.0,222.0 370.0,260.0 250.0,260.0"></polyline><polyline class="w " points="250.0,150.0 370.0,150.0"></polyline><circle class="node" cx="370" cy="150" r="3.3"></circle><g class="comp "><circle class="w body" cx="370" cy="95" r="17"></circle><text x="370" y="100" class="mlet" text-anchor="middle">V</text><text x="394" y="99" class="lbl acc" text-anchor="start">VL</text></g><g class="comp "><circle class="w body" cx="370" cy="205" r="17"></circle><text x="370" y="210" class="mlet" text-anchor="middle">V</text><text x="394" y="209" class="lbl acc" text-anchor="start">VR</text></g><g class="comp "><circle class="w body" cx="70" cy="150" r="18"></circle><path class="w thin" d="M60 150 q5 -12 10 0 t10 0"></path><text x="96" y="146" class="lbl" text-anchor="start">sine</text><text x="96" y="161" class="lbl sub" text-anchor="start">1 kHz</text></g></svg><figcaption>مخطط الدائرة</figcaption></figure>
+  </div>
+  <table class='kv'><tr><th>المعطى</th><th><span dir="ltr" style="unicode-bidi:isolate">f</span></th><th><span dir="ltr" style="unicode-bidi:isolate">r</span></th><th>R عند التساوي</th></tr><tr><td>القيمة</td><td><span dir="ltr" style="unicode-bidi:isolate">1000 Hz</span></td><td>بالأوميتر</td><td>من صندوق المقاومات</td></tr></table>
+  <div class="steps"><b>الخطوات:</b> قِس r بالأوميتر ← المولّد 1 kHz ← الملف على التوالي مع R ← غيّر R حتى VR = VL ← احسب L.</div>
+  <h3>أسئلة المناقشة</h3>
+  <div class="qa"><div class='q'><span class='qn'>1</span><div><b>لماذا يتساوى VR و VL؟</b><p>لأن المعادلة مبنية على <span class="l" dir="ltr">R = |ZL|</span>.</p></div></div><div class='q'><span class='qn'>2</span><div><b>أثر التردد في XL؟</b><p><span class="l" dir="ltr">XL = 2πfL</span>: تزداد طردياً.</p></div></div><div class='q'><span class='qn'>3</span><div><b>لو صار التردد 2000 Hz؟</b><p>تتضاعف XL ونحتاج R أكبر، لكن L المحسوبة لا تتغير.</p></div></div><div class='q'><span class='qn'>4</span><div><b>مصادر الخطأ؟</b><p>دقة r، دقة الفولتميتر عند 1 kHz، تشوّه الموجة، صعوبة ضبط التساوي.</p></div></div></div>
+</section>
+<section class="exp">
+  <header class="band">
+    <div class="num">06</div>
+    <div><h2>قياس السعة</h2><div class="en">Capacitance Measurement</div></div>
+  </header>
+  <p class="idea">الطريقة نفسها مع متسعة بدل الملف: التيار واحد في R و C، فنحسب C من نسبة الجهدين.</p>
+  <div class="grid">
+    <div class="laws"><h3>القوانين</h3><div class="eq"><div class="m" dir="ltr">X<sub>C</sub> = <span class="fr"><span class="n">1</span><span class="d">2πfC</span></span></div><div class=note>الرادة السعوية</div></div><div class="eq"><div class="m" dir="ltr">C = <span class="fr"><span class="n">V<sub>R</sub></span><span class="d">2πf · R · V<sub>C</sub></span></span></div></div><div class="eq"><div class="m" dir="ltr">V<sub>R</sub> = V<sub>C</sub> &nbsp;⟹&nbsp; C = <span class="fr"><span class="n">1</span><span class="d">2πfR</span></span></div></div></div>
+    <figure class="circ"><svg class="schem " viewBox="0 0 450 290" role="img" aria-label="مخطط الدائرة"><style>
+.w{fill:none;stroke:#2b3a44;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.w.thin{stroke-width:1.5}.w.plate{stroke-width:4}.w.active,.comp.active .w{stroke:#0a6a84;stroke-width:2.6}
+.redlead{stroke:#c62828}.body{fill:#ffffff}.node{fill:#2b3a44}.term{fill:#fff;stroke:#2b3a44;stroke-width:2}
+.lbl{fill:#13212a;font-family:'Plex Mono';font-size:13px;font-weight:500}.lbl.sub{fill:#627580;font-size:11.5px}
+.lbl.acc{fill:#0a6a84;font-weight:600}.lbl.big{font-size:15px;font-weight:600}.lbl.cop{fill:#b0602a;font-weight:600}
+.mlet{fill:#13212a;font-family:'Plex Mono';font-size:15px;font-weight:700}.arrow-fill{fill:#2b3a44}.flow{display:none}
+</style><defs><marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b3a44"/></marker></defs><polyline class="w " points="70.0,132.0 70.0,40.0 250.0,40.0"></polyline><polyline class="w " points="250.0,260.0 70.0,260.0 70.0,168.0"></polyline><g class="comp "><g transform="translate(250 40) rotate(90.000)"><path class="w" d="M0 0 L34.0 0 L37.5 -6 L44.5 6 L51.5 -6 L58.5 6 L65.5 -6 L72.5 6 L76.0 0 L110.0 0"></path><line class="w thin" x1="36.0" y1="13" x2="74.0" y2="-14" marker-end="url(#arrowhead)"></line></g><text x="232" y="99" class="lbl " text-anchor="end">R</text></g><g class="comp "><g transform="translate(250 150) rotate(90.000)"><path class="w" d="M0 0 L50 0 M60 0 L110 0"></path><path class="w plate" d="M50 -14 L50 14 M60 -14 L60 14"></path></g><text x="232" y="209" class="lbl " text-anchor="end">C</text></g><circle class="node" cx="250" cy="40" r="3.3"></circle><circle class="node" cx="250" cy="150" r="3.3"></circle><circle class="node" cx="250" cy="260" r="3.3"></circle><polyline class="w " points="250.0,40.0 370.0,40.0 370.0,78.0"></polyline><polyline class="w " points="370.0,112.0 370.0,188.0"></polyline><polyline class="w " points="370.0,222.0 370.0,260.0 250.0,260.0"></polyline><polyline class="w " points="250.0,150.0 370.0,150.0"></polyline><circle class="node" cx="370" cy="150" r="3.3"></circle><g class="comp "><circle class="w body" cx="370" cy="95" r="17"></circle><text x="370" y="100" class="mlet" text-anchor="middle">V</text><text x="394" y="99" class="lbl acc" text-anchor="start">VR</text></g><g class="comp "><circle class="w body" cx="370" cy="205" r="17"></circle><text x="370" y="210" class="mlet" text-anchor="middle">V</text><text x="394" y="209" class="lbl acc" text-anchor="start">VC</text></g><g class="comp "><circle class="w body" cx="70" cy="150" r="18"></circle><path class="w thin" d="M60 150 q5 -12 10 0 t10 0"></path><text x="96" y="146" class="lbl" text-anchor="start">sine</text><text x="96" y="161" class="lbl sub" text-anchor="start">1 kHz</text></g></svg><figcaption>مخطط الدائرة</figcaption></figure>
+  </div>
+  <table class='kv'><tr><th>المعطى</th><th><span dir="ltr" style="unicode-bidi:isolate">f</span></th><th><span dir="ltr" style="unicode-bidi:isolate">R</span></th><th><span dir="ltr" style="unicode-bidi:isolate">VR , VC</span></th></tr><tr><td>القيمة</td><td><span dir="ltr" style="unicode-bidi:isolate">1000 Hz</span></td><td>متغيرة</td><td>بالفولتميتر</td></tr></table>
+  <div class="steps"><b>الخطوات:</b> صِل R و C على التوالي ← المولّد 1 kHz ← قِس VR و VC ← غيّر R حتى التساوي ← احسب C.</div>
+  <h3>أسئلة المناقشة</h3>
+  <div class="qa"><div class='q'><span class='qn'>1</span><div><b>لماذا يتساوى الجهدان؟</b><p>نضبط R حتى <span class="l" dir="ltr">R = XC</span> فتصبح <span class="l" dir="ltr">C = 1/2πfR</span>.</p></div></div><div class='q'><span class='qn'>2</span><div><b>أثر التردد؟</b><p>XC تقل بزيادة التردد فنحتاج R أصغر، و C لا تتغير.</p></div></div><div class='q'><span class='qn'>3</span><div><b>قياس المحاثة بها؟</b><p>نضع الملف بدل المتسعة: <span class="l" dir="ltr">L = √(R² − r²)/2πf</span>.</p></div></div></div>
+</section>
+<section class="exp">
+  <header class="band">
+    <div class="num">07</div>
+    <div><h2>المحوّل التفاضلي LVDT</h2><div class="en">Linear Variable Differential Transformer</div></div>
+  </header>
+  <p class="idea">ملف ابتدائي في الوسط وملفان ثانويان على جانبيه وقلب حديدي متحرك. حركة القلب تزيد جهد أحد الثانويين وتنقص الآخر، والإثارة متناوبة 338 Hz.</p>
+  <div class="grid">
+    <div class="laws"><h3>القوانين</h3><div class="eq"><div class="m" dir="ltr">V<sub>o</sub> = V<sub>S2</sub> − V<sub>S1</sub></div><div class=note>الثانويان على التوالي بتعاكس</div></div><div class="eq"><div class="m" dir="ltr">|V<sub>o</sub>| ∝ x &nbsp;,&nbsp; الطور = الاتجاه (180° عند الصفر)</div></div><div class="eq"><div class="m" dir="ltr">الحساسية = <span class="fr"><span class="n">ΔV<sub>o</sub></span><span class="d">Δx</span></span> &nbsp; (V/mm)</div></div></div>
+    <figure class="circ"><svg class="schem " viewBox="0 0 360 170" role="img" aria-label="LVDT"><style>
+.w{fill:none;stroke:#2b3a44;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.w.thin{stroke-width:1.5}.w.plate{stroke-width:4}.w.active,.comp.active .w{stroke:#0a6a84;stroke-width:2.6}
+.redlead{stroke:#c62828}.body{fill:#ffffff}.node{fill:#2b3a44}.term{fill:#fff;stroke:#2b3a44;stroke-width:2}
+.lbl{fill:#13212a;font-family:'Plex Mono';font-size:13px;font-weight:500}.lbl.sub{fill:#627580;font-size:11.5px}
+.lbl.acc{fill:#0a6a84;font-weight:600}.lbl.big{font-size:15px;font-weight:600}.lbl.cop{fill:#b0602a;font-weight:600}
+.mlet{fill:#13212a;font-family:'Plex Mono';font-size:15px;font-weight:700}.arrow-fill{fill:#2b3a44}.flow{display:none}
+</style><defs><marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b3a44"/></marker></defs><g class="comp "><g transform="translate(70 40) rotate(90.000)"><path class="w" d="M0 0 L5.0 0 a6.67 6.67 0 0 1 13.33 0 a6.67 6.67 0 0 1 13.33 0 a6.67 6.67 0 0 1 13.33 0 a6.67 6.67 0 0 1 13.33 0 a6.67 6.67 0 0 1 13.33 0 a6.67 6.67 0 0 1 13.33 0 L90.0 0"></path></g></g><rect x="104" y="30" width="10" height="110" fill="var(--ink-2)"></rect><g class="comp "><g transform="translate(150 20) rotate(90.000)"><path class="w" d="M0 0 L4.5 0 a5.75 5.75 0 0 1 11.50 0 a5.75 5.75 0 0 1 11.50 0 a5.75 5.75 0 0 1 11.50 0 a5.75 5.75 0 0 1 11.50 0 L55.0 0"></path></g></g><g class="comp "><g transform="translate(150 95) rotate(90.000)"><path class="w" d="M0 0 L4.5 0 a5.75 5.75 0 0 1 11.50 0 a5.75 5.75 0 0 1 11.50 0 a5.75 5.75 0 0 1 11.50 0 a5.75 5.75 0 0 1 11.50 0 L55.0 0"></path></g></g><text x="40" y="90" class="lbl big" text-anchor="middle">P</text><text x="176" y="52" class="lbl big" text-anchor="start">S1</text><text x="176" y="128" class="lbl big" text-anchor="start">S2</text><polyline class="w " points="150.0,75.0 150.0,95.0"></polyline><polyline class="w " points="150.0,20.0 250.0,20.0"></polyline><polyline class="w " points="150.0,150.0 250.0,150.0"></polyline><text x="270" y="90" class="lbl big acc" text-anchor="start">Vo</text></svg><figcaption>مخطط الدائرة</figcaption></figure>
+  </div>
+  <table class='kv'><tr><th>الإعداد</th><th><span dir="ltr" style="unicode-bidi:isolate">Vp</span></th><th><span dir="ltr" style="unicode-bidi:isolate">f</span></th><th>الإزاحات</th></tr><tr><td>القيمة</td><td><span dir="ltr" style="unicode-bidi:isolate">10 V (VR5)</span></td><td><span dir="ltr" style="unicode-bidi:isolate">338 Hz</span></td><td>±1، ±2، ±3 mm</td></tr></table>
+  <div class="steps"><b>الخطوات:</b> شغّل وحدة KL-620 ← اضبط Vp = 10 V ← حرّك البرغي حتى Vo30-1 = Vo30-2 (الصفر) ← سجّل عند الإزاحات ← ارسم.</div>
+  <h3>أسئلة المناقشة</h3>
+  <div class="qa"><div class='q'><span class='qn'>1</span><div><b>أهمية موضع الصفر؟</b><p>القلب في المنتصف و VS1 = VS2؛ مرجع القياس وأكثر المناطق خطية.</p></div></div><div class='q'><span class='qn'>2</span><div><b>تحريك القلب يميناً أو يساراً؟</b><p>نحو S2 يزداد V2، ونحو S1 يزداد V1، وينقلب الطور 180°.</p></div></div><div class='q'><span class='qn'>3</span><div><b>لماذا AC لا DC؟</b><p>الحث المتبادل يحتاج فيضاً متغيراً؛ المستمر لا يحتث جهداً.</p></div></div><div class='q'><span class='qn'>4</span><div><b>لماذا اللاخطية بعيداً عن الصفر؟</b><p>يخرج طرف القلب من منطقة الملفات فيتشبّع الربط ويقل الميل.</p></div></div></div>
+</section>
+<section class="final">
+  <header class="band"><div class="num">∑</div><div><h2>ملخص القوانين</h2><div class="en">Formula sheet</div></div></header>
+  <table class="sum"><tr><th>التجربة</th><th>القانون الرئيسي</th><th>قانون مساعد</th></tr><tr><td class='sn'>فولتميتر</td><td dir='ltr' class='sf'>Rs = Vf/Ig − Rg</td><td dir='ltr' class='sx'>Ig = Vg/Rg = 50 µA</td></tr><tr><td class='sn'>أميتر</td><td dir='ltr' class='sf'>Rsh = Vg/(I − Ig)</td><td dir='ltr' class='sx'>I = Ig + Ish</td></tr><tr><td class='sn'>ويتستون (اتزان)</td><td dir='ltr' class='sf'>Ru = R3·Rv/R2</td><td dir='ltr' class='sx'>VD = VB</td></tr><tr><td class='sn'>ويتستون (عدم اتزان)</td><td dir='ltr' class='sf'>Vo = V[Rx/(Rx+R3) − R1/(R1+R2)]</td><td dir='ltr' class='sx'>Ru = Rx − R4</td></tr><tr><td class='sn'>مجزئ الجهد</td><td dir='ltr' class='sf'>Vout = x·Vs</td><td dir='ltr' class='sx'>× Rm/(Rm + x(1−x)RT)</td></tr><tr><td class='sn'>المحاثة</td><td dir='ltr' class='sf'>L = √(R² − r²)/2πf</td><td dir='ltr' class='sx'>XL = 2πfL</td></tr><tr><td class='sn'>السعة</td><td dir='ltr' class='sf'>C = VR/(2πf·R·VC)</td><td dir='ltr' class='sx'>XC = 1/2πfC</td></tr><tr><td class='sn'>LVDT</td><td dir='ltr' class='sf'>Vo = VS2 − VS1</td><td dir='ltr' class='sx'>S = ΔVo/Δx</td></tr></table>
+  <h3>ثوابت الجلفانوميتر</h3>
+  <div class="chips"><span dir="ltr">Vg = 0.3 V</span><span dir="ltr">Ig = 50 µA</span><span dir="ltr">Rg = 6000 Ω</span><span dir="ltr">S = 20 kΩ/V</span></div>
+  <h3>قواعد سريعة</h3>
+  <ul class="rules">
+    <li>الفولتميتر يوصل <b>على التوازي</b> ومقاومته كبيرة، والأميتر يوصل <b>على التوالي</b> ومقاومته صغيرة.</li>
+    <li>المقاومة تُقاس <b>والمصدر مفصول</b>.</li>
+    <li>في دوائر AC الجهود طورية: <span dir="ltr">VR + VX ≠ Vs</span>.</li>
+    <li>الرادة الحثية تزداد مع التردد، والسعوية تقل معه.</li>
+  </ul>
+</section>
+</body></html>
